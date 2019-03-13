@@ -1,1 +1,1 @@
-be=(.5)*be
+bca[j][k] = int( (255) * (bca[j][k]) / (max_b))

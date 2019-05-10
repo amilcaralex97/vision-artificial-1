@@ -23,8 +23,8 @@ azulintenso=np.copy(img)
 
 for j in range(len(bai)):
 	for k in range(len(bai[j])):
-		bai[j][k] *= 1
-		gai[j][k] *= .5
+		bai[j][k] *= .5
+		gai[j][k] *= 1
 		rai[j][k] *= .5
 
 azulintenso=cv2.merge((bai,gai,rai))
@@ -36,8 +36,8 @@ azulConAlgoritmo=np.copy(img)
 
 for j in range(len(bca)):
 	for k in range(len(bca[j])):
-		bca[j][k] *= 1
-		gca[j][k] *= .5
+		bca[j][k] *= .5
+		gca[j][k] *= 1
 		rca[j][k] *= .5
 
 max_b = np.amax(np.amax(azulConAlgoritmo[:,:,0]))
@@ -57,14 +57,14 @@ nueva=cv2.merge((bca,gca,rca))
 
 """ Evaluacion sin algoritmo """
 
-""" azulSinAlgoritmo=np.copy(img)
+azulSinAlgoritmo=np.copy(img)
 (ba, ga, ra) = (azulSinAlgoritmo[:,:,0], azulSinAlgoritmo[:,:,1], azulSinAlgoritmo[:,:,2])
 
 #ba=ba*1.5
 for j in range(len(ba)):
 	for k in range(len(ba[j])):
-		bca[j][k] *= 1
-		gca[j][k] *= .5
+		bca[j][k] *= .5
+		gca[j][k] *= 1
 		rca[j][k] *= .5
 
 for j in range(len(ba)):
@@ -78,55 +78,17 @@ for j in range(len(ba)):
 			ga[j][k] = 0
 			ra[j][k] = 0
 
-azul=cv2.merge((ba,ga,ra)) """
+azul=cv2.merge((ba,ga,ra))
 #ba=np.where(ba>240,0,255*256)
 #ga=np.where(ga>230,0,255*256)
 #ra=np.where(ra>250,0,255*256)
-""" white patch binarizada """
 
-azulwp=np.copy(img)
-bwp,gwp,rwp=cv2.split(azulwp)
 
-for j in range(len(bwp)):
-	for k in range(len(bwp[j])):
-		bwp[j][k] *= 1
-		gwp[j][k] *= 1
-		rwp[j][k] *= 1
-
-max_bwp = np.amax(np.amax(azulwp[:,:,0]))
-print(max_bwp)
-max_gwp = np.amax(np.amax(azulwp[:,:,1]))
-print(max_gwp)
-max_rwp = np.amax(np.amax(azulwp[:,:,2]))
-print(max_rwp)
-
-for j in range(len(bwp)):
-	for k in range(len(bwp[j])):
-		bwp[j][k] = int( (255) * (bwp[j][k]) / (max_bwp))
-		gwp[j][k] = int( (255) * (gwp[j][k]) / (max_gwp))
-		rwp[j][k] = int( (255) * (rwp[j][k])/ (max_rwp)) 
-
-for j in range(len(bwp)):
-	for k in range(len(bwp[j])):
-		if bwp[j][k] < 240 & gwp[j][k] < 230 & rwp[j][k] < 250:
-			bwp[j][k] = 255
-			gwp[j][k] = 255
-			rwp[j][k] = 255
-		else:
-			bwp[j][k] = 0
-			gwp[j][k] = 0
-			rwp[j][k] = 0
-
-chidodido=cv2.merge((bwp,gwp,rwp))
-
-""" --------------------------------------- """
-
-#cv2.imshow("original",img)
-#cv2.imshow("normal binarizada",normal)
-#cv2.imshow("escalar azul",azul)
+cv2.imshow("original",img)
+cv2.imshow("normal binarizada",normal)
+cv2.imshow("escalar azul",azul)
 cv2.imshow("azul mas intenso",azulintenso)
 cv2.imshow("escalar nueva",nueva)
-cv2.imshow("chidodido",chidodido)
 #cv2.imshow("sin verde",manosinverde)
 #cv2.imshow("sin rojo",manosinrojo)
 cv2.waitKey(0)

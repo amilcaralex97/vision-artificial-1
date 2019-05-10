@@ -1,1 +1,2 @@
-bca[j][k] = int( (255) * (bca[j][k]) / (max_b))
+gauss=gauss.reshape(rowsg,columnsg,channelsg)
+noisy=gaussian+gauss

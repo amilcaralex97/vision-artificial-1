@@ -1,8 +1,6 @@
 import numpy as np
 import cv2 
 
-
-
 mano='./img/mano.jpg'
 manos='./img/manos.jpeg'
 ok='./img/ok.jpeg'
